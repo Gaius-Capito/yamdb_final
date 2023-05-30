@@ -9,7 +9,7 @@ services:
       - ./.env
 
   web:
-    image: gaiuscapito/api_yamdb
+    image: gaiuscapito/api_yamdb:latest
 
     restart: always
     volumes:
