@@ -1,4 +1,5 @@
 # YaMDb API
+
 ![example workflow](https://github.com/Gaius-Capito/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 
