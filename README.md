@@ -75,3 +75,5 @@ https://github.com/Sheleg0v - Иван Шелегов
 ```
 https://github.com/Gaius-Capito - Владислав Бунин
 ```
+
+http://51.250.12.162/
