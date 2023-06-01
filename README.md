@@ -2,7 +2,6 @@
 
 ![example workflow](https://github.com/Gaius-Capito/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
-
 ### Описание проекта:
 
 Проект YaMDb собирает отзывы пользователей на произведения. Сами произведения 
