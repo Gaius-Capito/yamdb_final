@@ -7,9 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY'),
 
-DEBUG = os.getenv('DEVELOPMENT')
+DEBUG = bool(os.getenv('DEVELOPMENT'))
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = list(os.getenv('ALLOWED_HOSTS', default='localhost').split())
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,7 +57,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
-if os.getenv('DEVELOPMENT'):
+if bool(os.getenv('DEVELOPMENT')):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
