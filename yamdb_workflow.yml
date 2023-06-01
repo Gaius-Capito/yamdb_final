@@ -5,19 +5,19 @@ on: [push]
 jobs:
   tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [ "3.7", "3.8", "3.9", "3.10",]
 
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
+      run: | 
+        python -m pip install --upgrade pip 
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-        pip install -r api_yamdb/requirements.txt
+        pip install -r api_yamdb/requirements.txt 
 
     - name: Check with flake8
       run: flake8 --ignore F401,F403,F405,E501,W605,W503,I001,I004,I005 .
@@ -64,7 +64,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker-compose stop
-            sudo docker-compose rm -f
+            sudo docker-compose rm web
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
@@ -73,7 +73,6 @@ jobs:
             echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            echo ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} >> .env
             sudo docker-compose up -d
 
   send_message:
@@ -85,4 +84,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ github.workflow }} успешно выполнен! Автор ${{ github.actor }}. Коммит https://github.com/${{ github.repository }}/commit/${{github.sha}}, ${{ github.event.commits[0].message }}
+          message: ${{ github.workflow }} успешно выполнен!
