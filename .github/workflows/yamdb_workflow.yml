@@ -73,6 +73,7 @@ jobs:
             echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            echo ALLOWED_HOSTS=${{ secrets.ALLOWED_HOSTS }} >> .env
             sudo docker-compose up -d
 
   send_message:
@@ -84,4 +85,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ github.workflow }} успешно выполнен!
+          message: ${{ github.workflow }} успешно выполнен! Автор ${{ github.actor }}. Коммит https://github.com/${{ github.repository }}/commit/${{github.sha}}, ${{ github.event.commits[0].message }}
