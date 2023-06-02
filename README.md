@@ -26,7 +26,7 @@ http://localhost/redoc/
 Клонировать репозиторий и перейти в него в командной строке: 
 
 ``` 
-https://github.com/Gaius-Capito/infra_sp2.git 
+https://github.com/Gaius-Capito/yamdb_final.git 
 ```
 Переходим в директорию с фалом docker-compose.yaml
 
@@ -48,7 +48,7 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 
 ### Заполните .env файл своими данными:
-Расположение файла: /infra_sp2/infra/.env
+Расположение файла: /yamdb_final/infra/.env
 ```
 # указываем, с какой БД работаем
 DB_ENGINE=django.db.backends.postgresql

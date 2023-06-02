@@ -2,12 +2,16 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY'),
 
-DEBUG = bool(os.getenv('DEVELOPMENT'))
+DEBUG = os.getenv('DEBUG', default=False) == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,7 +61,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
-if bool(os.getenv('DEVELOPMENT')):
+DEVELOPMENT = os.getenv('DEVELOPMENT', default=False) == 'True'
+
+if DEVELOPMENT:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
