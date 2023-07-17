@@ -74,5 +74,3 @@ https://github.com/Sheleg0v - Иван Шелегов
 ```
 https://github.com/Gaius-Capito - Владислав Бунин
 ```
-
-http://158.160.18.25/
